@@ -23,12 +23,41 @@ public class Palavra {
         }
         return dp;
     }
-
+    //======= inverterVetor(char[]) ======
+    static public char[] inverterVetor(char[] vetor){
+        char []returno=new char[vetor.length];
+        for(int i=vetor.length-1;i>=0;--i){
+            returno[(vetor.length-1)-i]=vetor[i];
+        }
+        return returno;
+    }
     //======= contarCAracter ==========
     public void contarCaracter(String pala){
-        dd=new Scanner(System.in);
+
+        /*OBS: Possue um problema de "loop infinito" ao executar.
+        E possue duplicação caso o usuario coloque o mesmo caracteres na busca de caracteres!
         
-        System.out.println("Qual caracteres deseja contar?\nOBS: ' -- ' para sair");
+        */
+
+        dd=new Scanner(System.in);
+
+        boolean f=true;
+        for(;f;){
+            if(pala.equals("")){
+                System.out.println("Parametro não passado!\nInformeo ou finalize a execução\nOBS: Para encerrar use ' -- ' ");
+                pala=dd.nextLine();
+                switch (pala) {
+                    case "--":
+                        System.exit(0);
+                        break;
+                    default:
+                        f=false;
+                        break;
+                }
+            }
+
+        }
+        System.out.println("Qual caracteres deseja contar?\nOBS: Use ' -- ' para parar de contar ");
         String carContar="",caracter;
         for(int i=0;;i++){
             if(i!=0){System.out.println("Qual caracter procurar: ");}
@@ -36,13 +65,9 @@ public class Palavra {
             if((caracter.equals("--"))){break;}
             carContar+=caracter;
         }
-        System.out.println("caracteres ->"+carContar);
-
         char[] arrayCaracter=arrayChar(carContar);
         int cont[]=new int[arrayCaracter.length];
-        
         for(int i=0;i<pala.length();i++){
-
             for(int l=0;l<arrayCaracter.length;l++){
                 if(pala.charAt(i)==arrayCaracter[l]){
                     cont[l]+=1;
@@ -58,12 +83,8 @@ public class Palavra {
         dd.close();
 
     }
-
-
     //========== visualisarArray (String) =======
     public void vusualisarArray(String vetor[]){
-        //{ "ola","Iae","tela"}
-        //[0,1,2]
         int i=0;
         for(String x:vetor){
             if(i==0){System.out.print("[");}
@@ -88,5 +109,36 @@ public class Palavra {
             i++;
         }
         System.out.print("]\n");
+    }
+    // ================ corrigirDuplicidade ===========
+    public char[] corrigirDupicidade(char []vetor){
+        char []retono=new char[vetor.length];
+        boolean fleg=true;
+        int contador=0;
+        vusualisarArray(vetor);
+        for(int i=vetor.length-1;i>=0;--i){
+            System.out.println("Vetor[x] > "+vetor[i]+" | x > "+i);
+            for(int j=((vetor.length-1)-contador)-1;j>=0;--j){
+                if(i==1){
+                    j--;
+                }
+                if(i==0){
+                    break;
+                }
+                if(vetor[i]==vetor[j]){
+                    fleg=false;
+                    retono[contador]=vetor[i]; 
+                    continue;
+                }
+            }
+            if(fleg){
+                retono[contador]=vetor[i];
+                contador++;
+            }
+        }
+        retono[contador+1]=vetor[0]; 
+        retono=inverterVetor(retono);
+        vusualisarArray(retono);
+        return retono;
     }
 }
