@@ -31,41 +31,54 @@ public class Palavra {
         }
         return returno;
     }
+    //========== visualisarArray (char) =======
+    public void vusualisarArray(char vetor[]){
+        int i=0;
+        for(char x:vetor){
+            if(i==0){System.out.print("[");}
+            System.out.print("'"+x+"'");
+            if(i<vetor.length-1){
+                System.out.print(",");
+            }
+            i++;
+        }
+        System.out.print("]\n");
+    }
+    //========== visualisarArray (String) =======
+    public void vusualisarArray(String vetor[]){
+        int i=0;
+        for(String x:vetor){
+            if(i==0){System.out.print("[");}
+            System.out.print("''"+x+"''");
+            if(i<vetor.length-1){
+                System.out.print(",");
+            }
+            i++;
+        }
+        System.out.print("]\n");
+    }
     //======= contarCAracter ==========
     public void contarCaracter(String pala){
-
         /*OBS: Possue um problema de "loop infinito" ao executar.
         E possue duplicação caso o usuario coloque o mesmo caracteres na busca de caracteres!
-        
         */
-
         dd=new Scanner(System.in);
-
         boolean f=true;
         for(;f;){
             if(pala.equals("")){
                 System.out.println("Parametro não passado!\nInformeo ou finalize a execução\nOBS: Para encerrar use ' -- ' ");
                 pala=dd.nextLine();
-                switch (pala) {
-                    case "--":
-                        System.exit(0);
-                        break;
-                    default:
-                        f=false;
-                        break;
-                }
+            }else{
+                break;
             }
-
         }
         System.out.println("Qual caracteres deseja contar?\nOBS: Use ' -- ' para parar de contar ");
-        String carContar="",caracter;
+        String carContar="",p;
         for(int i=0;;i++){
-            if(i!=0){System.out.println("Qual caracter procurar: ");}
-            caracter=dd.next();
-            if((caracter.equals("--"))){break;}
-            carContar+=caracter;
+            System.out.println("Qual caracter procurar: ");
+            
         }
-        char[] arrayCaracter=arrayChar(carContar);
+        char[] arrayCaracter=corrigirDupicidade(arrayChar(carContar));
         int cont[]=new int[arrayCaracter.length];
         for(int i=0;i<pala.length();i++){
             for(int l=0;l<arrayCaracter.length;l++){
@@ -81,34 +94,6 @@ public class Palavra {
             i++;
         }
         dd.close();
-
-    }
-    //========== visualisarArray (String) =======
-    public void vusualisarArray(String vetor[]){
-        int i=0;
-        for(String x:vetor){
-            if(i==0){System.out.print("[");}
-            System.out.print("''"+x+"''");
-            if(i<vetor.length-1){
-                System.out.print(",");
-            }
-            i++;
-        }
-        System.out.print("]\n");
-    }
-
-    //========== visualisarArray (char) =======
-    public void vusualisarArray(char vetor[]){
-        int i=0;
-        for(char x:vetor){
-            if(i==0){System.out.print("[");}
-            System.out.print("'"+x+"'");
-            if(i<vetor.length-1){
-                System.out.print(",");
-            }
-            i++;
-        }
-        System.out.print("]\n");
     }
     // ================ corrigirDuplicidade ===========
     public char[] corrigirDupicidade(char []vetor){
@@ -117,7 +102,6 @@ public class Palavra {
         int contador=0;
         vusualisarArray(vetor);
         for(int i=vetor.length-1;i>=0;--i){
-            System.out.println("Vetor[x] > "+vetor[i]+" | x > "+i);
             for(int j=((vetor.length-1)-contador)-1;j>=0;--j){
                 if(i==1){
                     j--;
@@ -138,7 +122,6 @@ public class Palavra {
         }
         retono[contador+1]=vetor[0]; 
         retono=inverterVetor(retono);
-        vusualisarArray(retono);
         return retono;
     }
 }
