@@ -117,18 +117,12 @@ public class Palavra {
     }
     // ================ corrigirDuplicidade ===========
     public char[] corrigirDupicidade(char []vetor){
+        //   Ainda mantem algumas duplicidade
         char []retono=new char[vetor.length];
         boolean fleg=true;
         int contador=0,veConot=0;
         for(int i=vetor.length-1;i>0;--i){
-            // if(i==0){
-            //     break;
-            // }
             for(int j=((vetor.length-1)-veConot)-1;j>0;--j){
-                
-                // if(j==0){
-                //     break;
-                // }
                 if(vetor[i]==vetor[j]){
                     fleg=false;
                     retono[contador]=vetor[i]; 
