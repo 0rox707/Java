@@ -72,13 +72,23 @@ public class Palavra {
                 break;
             }
         }
-        System.out.println("Qual caracteres deseja contar?\nOBS: Use ' -- ' para parar de contar ");
-        String carContar="",p;
+        System.out.println("(Envie apenas um caracter)\nQual caracteres deseja contar?\nOBS: Use ' -- ' para parar de contar ");
+        String carContar="",p="";
         for(int i=0;;i++){
             System.out.println("Qual caracter procurar: ");
-            
+            p+=dd.next();
+            if(p.charAt(0)==' '){
+                continue;
+            }
+            if (p.equals("--")) {
+                break;
+            }
+
+            carContar+=p.charAt(0);
+            p="";
         }
-        char[] arrayCaracter=corrigirDupicidade(arrayChar(carContar));
+        char[] arrayCaracter= corrigirDupicidade(arrayChar(carContar));
+
         int cont[]=new int[arrayCaracter.length];
         for(int i=0;i<pala.length();i++){
             for(int l=0;l<arrayCaracter.length;l++){
@@ -100,19 +110,18 @@ public class Palavra {
         char []retono=new char[vetor.length];
         boolean fleg=true;
         int contador=0;
+        System.out.print("> ");
         vusualisarArray(vetor);
         for(int i=vetor.length-1;i>=0;--i){
             for(int j=((vetor.length-1)-contador)-1;j>=0;--j){
-                if(i==1){
-                    j--;
-                }
+                
                 if(i==0){
                     break;
                 }
                 if(vetor[i]==vetor[j]){
                     fleg=false;
                     retono[contador]=vetor[i]; 
-                    continue;
+                
                 }
             }
             if(fleg){
