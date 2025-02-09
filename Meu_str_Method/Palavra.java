@@ -35,6 +35,9 @@ public class Palavra {
     public void vusualisarArray(char vetor[]){
         int i=0;
         for(char x:vetor){
+            if (x=='\u0000') {
+                continue;
+            }
             if(i==0){System.out.print("[");}
             System.out.print("'"+x+"'");
             if(i<vetor.length-1){
@@ -62,12 +65,14 @@ public class Palavra {
         /*OBS: Possue um problema de "loop infinito" ao executar.
         E possue duplicação caso o usuario coloque o mesmo caracteres na busca de caracteres!
         */
+        System.out.println("==============\n");
         dd=new Scanner(System.in);
         boolean f=true;
         for(;f;){
             if(pala.equals("")){
-                System.out.println("Parametro não passado!\nInformeo ou finalize a execução\nOBS: Para encerrar use ' -- ' ");
+                System.out.println("Parametro não passado!\nInformeo ou finalize a execução\nOBS: Para encerrar use ' -- ' \n");
                 pala=dd.nextLine();
+                System.out.println("==============================\n");
             }else{
                 break;
             }
@@ -83,7 +88,7 @@ public class Palavra {
             if (p.equals("--")) {
                 break;
             }
-
+            
             carContar+=p.charAt(0);
             p="";
         }
@@ -97,9 +102,14 @@ public class Palavra {
                 }
             }
         }
+        System.out.print("Caracteres a procurar > ");
         vusualisarArray(arrayCaracter);
+        System.out.println("---------------------");
         int i=0;
         for(char x:arrayCaracter){
+            if( '\u0000' == x){
+                continue;
+            }
             System.out.println("O caracter > "+x+" apareceu "+cont[i]);
             i++;
         }
@@ -109,27 +119,30 @@ public class Palavra {
     public char[] corrigirDupicidade(char []vetor){
         char []retono=new char[vetor.length];
         boolean fleg=true;
-        int contador=0;
-        System.out.print("> ");
-        vusualisarArray(vetor);
-        for(int i=vetor.length-1;i>=0;--i){
-            for(int j=((vetor.length-1)-contador)-1;j>=0;--j){
+        int contador=0,veConot=0;
+        for(int i=vetor.length-1;i>0;--i){
+            // if(i==0){
+            //     break;
+            // }
+            for(int j=((vetor.length-1)-veConot)-1;j>0;--j){
                 
-                if(i==0){
-                    break;
-                }
+                // if(j==0){
+                //     break;
+                // }
                 if(vetor[i]==vetor[j]){
                     fleg=false;
                     retono[contador]=vetor[i]; 
-                
+                    
                 }
             }
+            veConot++;
             if(fleg){
                 retono[contador]=vetor[i];
                 contador++;
             }
+            fleg=true;
         }
-        retono[contador+1]=vetor[0]; 
+        retono[contador]=vetor[0];
         retono=inverterVetor(retono);
         return retono;
     }
