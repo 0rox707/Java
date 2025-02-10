@@ -1,5 +1,6 @@
 package Meu_str_Method;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 public class Palavra {
     static Scanner dd;
@@ -32,7 +33,7 @@ public class Palavra {
         return returno;
     }
     //========== visualisarArray (char) =======
-    public void vusualisarArray(char vetor[]){
+    public static void visualisarArray(char vetor[]){
         int i=0;
         for(char x:vetor){
             if (x=='\u0000') {
@@ -140,4 +141,79 @@ public class Palavra {
         retono=inverterVetor(retono);
         return retono;
     }
+
+    //========== criptPrint =================
+    public void criptPrint(String txt)throws InterruptedException{
+
+        char[] upperCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toCharArray(),
+        lowerCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toLowerCase().toCharArray(),
+        novoCaracter="æßIðđV₢i≈ʋFlqħµv¬đŋ∆øŧʝ§þ~@".toCharArray();
+        String returno="";
+        int i=0;
+        for(char x: txt.toCharArray()){
+            for(int j=0;j<27;j++){
+                if (x==' ') {
+                    Thread.sleep((60)*2);
+                    System.out.print(" ");
+                    break;
+                }
+                if(x==upperCaracter[j]){
+                    Thread.sleep((60)*2);
+                    System.out.print("·"+novoCaracter[j]);
+                    break;
+                }
+                if(x==lowerCaracter[j]){
+                    Thread.sleep((60)*2);
+                    System.out.print(novoCaracter[j]);
+                    break;
+                }
+            }
+            i++;
+        }
+        System.out.println("");
+
+
+
+    }
+
+
+
+
+
+
+    //========== criptTexto =================
+
+    public static String cripTxt(String txt){
+
+        // Não aceita caracteres acentuados.
+
+
+        char[] upperCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toCharArray(),
+        lowerCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toLowerCase().toCharArray(),
+        novoCaracter="æßIðđV₢i≈ʋFlqħµv¬đŋ∆øŧʝ§þ~@".toCharArray();
+        String returno="";
+        int i=0;
+        for(char x: txt.toCharArray()){
+            for(int j=0;j<27;j++){
+                if (x==' ') {
+                    returno+=" ";
+                    break;
+                }
+                if(x==upperCaracter[j]){
+                    returno+=("·"+novoCaracter[j]);
+                    break;
+                }
+                if(x==lowerCaracter[j]){
+                    returno+=novoCaracter[j];
+                    break;
+                }
+            }
+            i++;
+        }
+        return returno;
+    }
+
+
+
+
 }
