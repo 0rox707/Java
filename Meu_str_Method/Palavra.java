@@ -142,8 +142,43 @@ public class Palavra {
         return retono;
     }
 
-    //========== criptPrint =================
-    public void criptPrint(String txt)throws InterruptedException{
+    public void descript_(String txt)throws InterruptedException{
+        
+        char[] upperCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toCharArray(),
+        lowerCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toLowerCase().toCharArray(),
+        novoCaracter="æßIðđV₢i≈ʋFlqħµv¬%ŋ∆øŧʝ§þ~@".toCharArray();
+        boolean flag=false;
+        for(int i=0;i<=txt.length()-1;i++){
+            if(txt.charAt(i)=='·'){
+                i++;
+                flag=true;
+            }
+            if(txt.charAt(i)==' '|| txt.charAt(i)==','||txt.charAt(i)=='.'||txt.charAt(i)=='?'||txt.charAt(i)=='!'){
+                System.out.print(txt.charAt(i));
+                continue;
+            }
+            for(int l=0;l<=upperCaracter.length-1;l++){
+                if(flag){
+                    if(txt.charAt(i)==novoCaracter[l]){
+                        System.out.print(upperCaracter[l]);
+                        flag=false;
+                        continue;
+                    }
+                }else{
+                    if(txt.charAt(i)==novoCaracter[l]){
+                        System.out.print(lowerCaracter[l]);
+                        flag=false;
+                        continue;
+                        }
+                }
+                
+            }
+        }
+        System.out.println();
+    }
+
+    //========== in_cript_ =================
+    public void in_cript_(String txt)throws InterruptedException{
 
         char[] upperCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toCharArray(),
         lowerCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toLowerCase().toCharArray(),
@@ -152,9 +187,9 @@ public class Palavra {
         int i=0;
         for(char x: txt.toCharArray()){
             for(int j=0;j<27;j++){
-                if (x==' ') {
+                if (x==' '|| x==',' ||x== '.'||x== '?'|| x=='!') {
                     Thread.sleep((60)*2);
-                    System.out.print(" ");
+                    System.out.print(x);
                     break;
                 }
                 if(x==upperCaracter[j]){
@@ -171,32 +206,21 @@ public class Palavra {
             i++;
         }
         System.out.println("");
-
-
-
     }
 
-
-
-
-
-
-    //========== criptTexto =================
-
-    public static String cripTxt(String txt){
+    //========== in_cript =================
+    public String in_cript(String txt){
 
         // Não aceita caracteres acentuados.
-
-
         char[] upperCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toCharArray(),
         lowerCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toLowerCase().toCharArray(),
-        novoCaracter="æßIðđV₢i≈ʋFlqħµv¬đŋ∆øŧʝ§þ~@".toCharArray();
+        novoCaracter="æßIðđV₢i≈ʋFlqħµv¬%ŋ∆øŧʝ§þ~@".toCharArray();
         String returno="";
         int i=0;
         for(char x: txt.toCharArray()){
             for(int j=0;j<27;j++){
-                if (x==' ') {
-                    returno+=" ";
+                if (x==' '|| x==',' || x== '.'|| x== '?'|| x=='!') {
+                    returno+=x;
                     break;
                 }
                 if(x==upperCaracter[j]){
