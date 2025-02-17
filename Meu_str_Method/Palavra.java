@@ -142,6 +142,44 @@ public class Palavra {
         return retono;
     }
 
+
+
+    public String descript(String txt){
+        char[] upperCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toCharArray(),
+        lowerCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toLowerCase().toCharArray(),
+        novoCaracter="æßIðđV₢i≈ʋFlqħµv¬%ŋ∆øŧʝ§þ~@".toCharArray();
+        boolean flag=false;
+        String retorno="";
+        for(int i=0;i<=txt.length()-1;i++){
+            if(txt.charAt(i)=='·'){
+                i++;
+                flag=true;
+            }
+            if(txt.charAt(i)==' '|| txt.charAt(i)==','||txt.charAt(i)=='.'||txt.charAt(i)=='?'||txt.charAt(i)=='!'){
+                retorno+=txt.charAt(i);
+                continue;
+            }
+            for(int l=0;l<=upperCaracter.length-1;l++){
+                if(flag){
+                    if(txt.charAt(i)==novoCaracter[l]){
+                        retorno+=upperCaracter[l];
+                        flag=false;
+                        continue;
+                    }
+                }else{
+                    if(txt.charAt(i)==novoCaracter[l]){
+                        retorno+=lowerCaracter[l];
+                        flag=false;
+                        continue;
+                        }
+                }
+                
+            }
+        }
+        return retorno;
+
+    }
+
     public void descript_(String txt)throws InterruptedException{
         
         char[] upperCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toCharArray(),
