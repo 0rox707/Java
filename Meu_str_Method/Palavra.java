@@ -5,7 +5,6 @@ import java.util.concurrent.ExecutionException;
 public class Palavra {
     static Scanner dd;
     
-    
     //======= arrayChar ==========
     public static char[] arrayChar(String str){
         dd=new Scanner(System.in);
@@ -16,6 +15,7 @@ public class Palavra {
         dd.close();
         return reto;
     }
+    
     //======= inverterPalavra ==========
     static String invertePalavra(String p){
         String dp= "";
@@ -24,6 +24,7 @@ public class Palavra {
         }
         return dp;
     }
+    
     //======= inverterVetor(char[]) ======
     static public char[] inverterVetor(char[] vetor){
         char []returno=new char[vetor.length];
@@ -32,6 +33,7 @@ public class Palavra {
         }
         return returno;
     }
+    
     //========== visualisarArray (char) =======
     public static void visualisarArray(char vetor[]){
         int i=0;
@@ -48,6 +50,7 @@ public class Palavra {
         }
         System.out.print("]\n");
     }
+    
     //========== visualisarArray (String) =======
     public void vusualisarArray(String vetor[]){
         int i=0;
@@ -61,6 +64,7 @@ public class Palavra {
         }
         System.out.print("]\n");
     }
+    
     //======= contarCAracter ==========
     public void contarCaracter(String pala){
         /*OBS: Possue um problema de "loop infinito" ao executar.
@@ -104,7 +108,7 @@ public class Palavra {
             }
         }
         System.out.print("Caracteres a procurar > ");
-        vusualisarArray(arrayCaracter);
+    
         System.out.println("---------------------");
         int i=0;
         for(char x:arrayCaracter){
@@ -116,6 +120,7 @@ public class Palavra {
         }
         dd.close();
     }
+    
     // ================ corrigirDuplicidade ===========
     public char[] corrigirDupicidade(char []vetor){
         //   Ainda mantem algumas duplicidade
@@ -141,9 +146,7 @@ public class Palavra {
         retono=inverterVetor(retono);
         return retono;
     }
-
-
-
+    //=========== descript =============
     public String descript(String txt){
         char[] upperCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toCharArray(),
         lowerCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toLowerCase().toCharArray(),
@@ -177,11 +180,10 @@ public class Palavra {
             }
         }
         return retorno;
-
     }
-
+    //========= descript_ =====
     public void descript_(String txt)throws InterruptedException{
-        
+
         char[] upperCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toCharArray(),
         lowerCaracter="ABCDEFGHIJKLNMOPQRSTUVWXYZÇ".toLowerCase().toCharArray(),
         novoCaracter="æßIðđV₢i≈ʋFlqħµv¬%ŋ∆øŧʝ§þ~@".toCharArray();
@@ -274,8 +276,6 @@ public class Palavra {
         }
         return returno;
     }
-
-
 
 
 }
