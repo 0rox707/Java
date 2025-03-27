@@ -17,7 +17,7 @@ public class Palavra {
     }
     
     //======= inverterPalavra ==========
-    static String invertePalavra(String p){
+    public static String invertePalavra(String p){
         String dp= "";
         for(int i=p.length()-1;i >=0;i-- ){
             dp += p.charAt(i);
@@ -26,7 +26,7 @@ public class Palavra {
     }
     
     //======= inverterVetor(char[]) ======
-    static public char[] inverterVetor(char[] vetor){
+    public static  char[] inverterVetor(char[] vetor){
         char []returno=new char[vetor.length];
         for(int i=vetor.length-1;i>=0;--i){
             returno[(vetor.length-1)-i]=vetor[i];
@@ -107,7 +107,7 @@ public class Palavra {
                 }
             }
         }
-        System.out.print("Caracteres a procurar > ");
+        // System.out.print("Caracteres a procurar > ");
     
         System.out.println("---------------------");
         int i=0;
@@ -277,5 +277,5 @@ public class Palavra {
         return returno;
     }
 
-
+    
 }
