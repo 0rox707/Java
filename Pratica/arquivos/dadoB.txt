@@ -1,0 +1,2 @@
+le linha por linha.
+retornando Null caso não aja mais linha.
