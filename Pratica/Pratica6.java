@@ -3,14 +3,16 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-public class Pratica6 {
 
+
+public class Pratica6 {
+    
     
     public static void main(String[] args) {
         System.out.println("===============\nFileReader");
-        File arqR = new File("DadoR.txt");
-        File arqB = new File("DadoB.txt");
-        File arqS = new File("DadoS");
+        File arqR = new File("/Users/joaovictor/Desktop/Java/Teste.html");
+        File arqB = new File("/Users/joaovictor/Desktop/Java/Pratica/arquivos/dadoB.txt");
+        File arqS = new File("Pratica/arquivos/dadoS");
         
         if (!arqR.exists()) {
             System.out.println("Arquivo "+arqR.getName()+" não existe");
@@ -18,6 +20,10 @@ public class Pratica6 {
         }
         if (!arqB.exists()) {
             System.out.println("Arquivo "+arqB.getName()+ " não existe");
+            System.exit(0);
+        }
+        if (!arqS.exists()) {
+            System.out.println("Arquivo "+arqS.getName()+ " não existe");
             System.exit(0);
         }
         try{

@@ -4,8 +4,8 @@ import java.io.IOException;
 
 public class Pratica7{
     public static void main(String[] args) {
-        File arqSobre= new File("arquivos/sobreArcrivo"); 
-        File arqFinsl= new File("arquivos/finalArcrivo"); 
+        File arqSobre= new File("Pratica/arquivos/sobreArcrivo"); 
+        File arqFinsl= new File("Pratica/arquivos/finalArcrivo"); 
         if(!arqSobre.exists()){
             System.out.println("Arquivo não existe! Criando arquivo"+arqSobre.getName());
         }
