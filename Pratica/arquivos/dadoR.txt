@@ -1,2 +1,0 @@
-le caracter por caracter! 
-e retorna o -1 se for o final do arquivo.
